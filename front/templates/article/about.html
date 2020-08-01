@@ -1,0 +1,45 @@
+{% extends 'article/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/delete_confirm.css' %}">
+    <style>
+        ul li {
+            list-style: none;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}关于项目{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <p><a href="javascript: window.history.go(-1);" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1><b>关于项目</b></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background: white">
+            <div class="col-md-12 col-sm-12 col-xs-12 blog-content">
+                <div class="about-wrapper" style="margin-left: 10px">
+                    <h4><b>用到的技术</b></h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                    <br>
+                    <h4><b>第三方插件</b></h4>
+                    <ul>
+                        <li>ckeditor</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'article/base.html' %}
+
+{% block title %}
+登录
+{% endblock %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/login&signup.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <h1><b>登录</b></h1>
+                <p>没有账号？<a href="{% url 'auth_app:signup' %}">马上注册</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12 blog-content">
+                <div class="login-wrapper">
+                    <form method="post">
+                        {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">邮箱</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">密码</label>
+                        <input type="password" class="form-control" name="password">
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember" value="1">
+                        <label class="form-check-label" for="exampleCheck1">记住我</label>
+                      </div>
+                        <ul>
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+
+                        </ul>
+                        <input type="submit" class="button" value="登录">
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

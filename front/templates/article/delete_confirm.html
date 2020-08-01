@@ -1,0 +1,36 @@
+{% extends 'article/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/delete_confirm.css' %}">
+{% endblock %}
+
+{% block title %}删除文章{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <p><a href="javascript: window.history.go(-1);" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1><b>删除文章</b></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background: white">
+            <div class="col-md-12 col-sm-12 col-xs-12 blog-content">
+                <div class="confirm-wrapper">
+                        <div class="delete-confirm">
+                            <i class="icon-biaoqing_beishang_o iconfont"></i>
+                            <h4>确定要删除文章 《{{ article.title }}》 吗？</h4>
+                            <a href="javascript: window.history.go(-1);">返回</a>
+                            <form action="{% url 'news_app:delete' article.pk %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="删除">
+                            </form>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

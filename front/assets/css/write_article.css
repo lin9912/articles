@@ -1,0 +1,35 @@
+.row .blog-content .write_news_wrapper form .button {
+    line-height: 16px;
+	margin-top: 20px;
+	display: inline-block;
+	padding: 12px 15px;
+	background-color: #3b3b3b;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 0px;
+}
+
+.row .sidebar .sidebar-content .my-article-list li {
+	list-style: none;
+}
+
+.row .sidebar .sidebar-content .my-article-list li .manage-article {
+	line-height: 16px;
+	margin-top: 20px;
+	display: inline-block;
+	padding: 12px 15px;
+	background-color: #e3e3e3;
+	/*color: #fff;*/
+	text-decoration: none;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 0px;
+}
+
+

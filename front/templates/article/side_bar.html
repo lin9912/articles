@@ -1,0 +1,18 @@
+<div class="col-md-3 col-sm-3 col-xs-12 sidebar">
+    <div class="sidebar-content">
+        <h4><strong>最新发布</strong></h4>
+        <ul>
+            {% for new_article in new_articles %}
+                <li><a href="{% url 'news_app:article_detail' new_article.pk %}"><p>{{ new_article.title }}</p></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="sidebar-content">
+        <h4><strong>分类</strong></h4>
+        <ul>
+            {% for category in categories %}
+                <li><a href="{% url 'news_app:category' category.name %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

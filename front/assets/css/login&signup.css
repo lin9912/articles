@@ -1,0 +1,20 @@
+.row .blog-content .login-wrapper form .button {
+    line-height: 16px;
+	margin-top: 20px;
+	display: inline-block;
+	padding: 12px 15px;
+	background-color: #3b3b3b;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 1px;
+	outline: none;
+	border: 0px;
+}
+
+
+.row .blog-content .login-wrapper form ul li {
+	list-style: none;
+	color: red;
+}

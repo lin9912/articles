@@ -1,0 +1,65 @@
+{% extends 'article/base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12" style="margin-left: 10px">
+                <p><a href="javascript: window.history.go(-1);" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1>
+                    <b>分类：{{ category.name }}</b><br>
+                    共{{ category.news_set.count }}篇文章
+                </h1>
+            </div>
+        </div>
+</div>
+
+    <div class="blog">
+            <div class="blog-content portfolio-masonry">
+                {% for article in articles %}
+                    <div class="blog-post selector col-md-6 col-sm-6 col-xs-12">
+                    <div class="blog-img">
+                        <a href="{% url 'news_app:article_detail' article.pk %}">
+                        <img src="{{ article.thumbnail }}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-info">
+                        <h2><a href="{% url 'news_app:article_detail' article.pk %}">{{ article.title }}</a></h2>
+                        <ul class="post-info">
+                            <li>作者: <a href="javascript:void(0)">{{ article.author }}</a></li>
+                            <li>分类: <a href="{% url 'news_app:category' article.category.name %}">{{ article.category.name }}</a></li>
+                            <li>发布日期: <a href="javascript:void(0)">{{ article.pub_date | date:"Y/m/d" }}</a></li>
+                        </ul>
+                        <p>{{ article.desc }}</p>
+                        <a href="{% url 'news_app:article_detail' article.pk %}" class="button">
+                        查看更多
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="page-pagination">
+                        {% if articles.has_previous %}
+                            <li><a href="?page={{ articles.previous_page_number }}"><i class="icon-shangyiye iconfont"></i></a></li>
+                        {% endif %}
+                        {% for page_number in articles.paginator.page_range %}
+                            {% if page_number == articles.number and articles.paginator.num_pages > 1 %}
+                                 <li class="active"><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+                            {% elif articles.paginator.num_pages > 1 %}
+                                 <li><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if articles.has_next %}
+                            <li><a href="?page={{ articles.next_page_number }}"><i class="icon-xiayiye iconfont"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+             </div>
+        </div>
+
+{% endblock %}

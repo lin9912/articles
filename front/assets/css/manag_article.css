@@ -1,0 +1,31 @@
+.row .blog-content .article-list-wrapper .no-article {
+    margin: 0 auto;
+    width: 200px;
+    margin-top: 100px;
+}
+
+.row .blog-content .article-list-wrapper .no-article i {
+    font-size: 80px;
+    margin-left: 30px;
+    color: #e3e3e3;
+}
+
+.row .blog-content .article-list-wrapper .no-article h4 {
+    color: #e3e3e3;
+}
+
+.row .blog-content .article-list-wrapper .no-article a {
+    line-height: 16px;
+	margin-top: 20px;
+	display: inline-block;
+	padding: 12px 15px;
+	background-color: #3b3b3b;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 0px;
+    margin-left: 30px;
+}

@@ -1,0 +1,55 @@
+{% extends 'article/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/user_center.css' %}">
+{% endblock %}
+
+{% block title %}个人中心{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <p><a href="{% url 'news_app:index' %}" style="color: #c4c4c4">回到首页 <i class="icon-shouye iconfont" style="color: #c4c4c4"></i></a></p>
+                <h1><b>{{ user.username }}，欢迎！</b></h1>
+                <p style="float: left;">您现在可以 <a href="{% url 'news_app:write_article' %}">发布文章</a> 或 <a href="{% url 'news_app:article_management' user %}">查看您发布的文章({{ article.count }})</a></p>
+                <p style="float: right"><a href="{% url 'auth_app:logout' %}">退出登录</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background: white">
+            <div class="col-md-9 col-sm-9 col-xs-12 blog-content">
+                <div class="user-info-wrapper">
+
+                    <table class="table" style="margin-top: 20px" border="0px">
+                        <tbody>
+                        <tr>
+                            <th scope="row">用户名</th>
+                            <td>{{ user.username }}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">邮箱</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">上次登录</th>
+                            <td>{{ user.last_login | date:"Y / m / d / g:i a" }}</td>
+                        </tr>
+                        <tr>
+                            <th  scope="row">加入时间</th>
+                            <td>{{ user.date_joined | date:"Y / m / d / g:i a"}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <div class="col-md-3 col-sm-3 col-xs-12 sidebar">
+            <div class="sidebar-content">
+                <a href="{% url 'auth_app:edit_info' user.pk %}" class="edit-btn">编辑资料</a>
+            </div>
+        </div>
+        </div>
+{% endblock %}

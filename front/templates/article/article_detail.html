@@ -1,0 +1,36 @@
+{% extends 'article/base.html' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <p><a href="javascript: window.history.go(-1);" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1><b>{{ article.title }}</b></h1>
+                <p style="float: left">作者：{{ article.author.username }} &nbsp; &nbsp; &nbsp; 发布时间：{{ article.pub_date | date:"Y/m/d" }}</p>
+                {% if article.author.pk == user.pk %}
+                    <div style="float: right">
+                        <a href="{% url 'news_app:edit' article.pk %}" class="btn btn-xs btn-primary">编辑</a>
+                        <a href="{% url 'news_app:delete' article.pk %}" class="btn btn-danger btn-xs">删除</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12 blog-content" style="background: white; margin-bottom: 20px; padding: 40px">
+                <div class="news-detail">
+                    <div class="news-content">
+                        {{ article.content | safe}}
+                    </div>
+                </div>
+            </div>
+            {% include 'article/side_bar.html' %}
+        </div>
+    </div>
+{% endblock %}

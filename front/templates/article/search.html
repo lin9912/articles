@@ -1,0 +1,63 @@
+{% extends 'article/base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block title %}搜索{% endblock %}
+
+{% block content %}
+<div class="page-title" style="margin-bottom: -30px">
+        <div class="row">
+            <div class="col-md-9 col-xs-12" style="margin-left: 10px">
+                <p><a href="javascript: window.history.go(-1);" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1>
+                    <b>搜索</b><br>
+                    {% if keyword and articles %}
+                          找到{{ articles.count }}篇关于“{{ keyword }}”的文章
+                    {% elif keyword and not articles %}
+                        没有找到关于“{{ keyword }}”的文章，换个关键词试试
+                    {% endif %}
+                </h1>
+            </div>
+        </div>
+</div>
+
+    <div class="blog">
+        <form method="get">
+            <div class="input-group col-lg-12" style="padding: 14px; margin-bottom: 20px">
+                   <input type="text" class="form-control"placeholder="输入关键词搜索" style="border-radius: 0; height: 40px; border: #8A8A8A" name="keyword" value="{{ keyword }}">
+                    <span class="input-group-btn">
+                       <button class="btn btn-info btn-search" style="border-radius: 0; background-color: #3b3b3b; color: #fff; border: 2.5px solid #3b3b3b">
+                           <i class="icon-search iconfont"></i>
+                           <input type="submit" hidden>
+                       </button>
+                    </span>
+             </div>
+        </form>
+
+            <div class="blog-content portfolio-masonry">
+                {% for article in articles %}
+                    <div class="blog-post selector col-md-6 col-sm-6 col-xs-12">
+                    <div class="blog-img">
+                        <a href="{% url 'news_app:article_detail' article.pk %}">
+                        <img src="{{ article.thumbnail }}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-info">
+                        <h2><a href="{% url 'news_app:article_detail' article.pk %}">{{ article.title }}</a></h2>
+                        <ul class="post-info">
+                            <li>作者: <a href="#">{{ article.author }}</a></li>
+                            <li>分类: <a href="#">{{ article.category.name }}</a></li>
+                            <li>发布日期: <a href="#">{{ article.pub_date | date:"Y/m/d" }}</a></li>
+                        </ul>
+                        <p>{{ article.desc }}</p>
+                        <a href="{% url 'news_app:article_detail' article.pk %}" class="button">
+                        查看更多
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+{% endblock %}

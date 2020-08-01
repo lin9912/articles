@@ -1,0 +1,60 @@
+{% extends 'article/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/manag_article.css' %}">
+{% endblock %}
+
+{% block title %}文章管理{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <p><a href="javascript: window.history.back();" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1><b>文章管理</b></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background: white">
+            <div class="col-md-12 col-sm-12 col-xs-12 blog-content">
+                <div class="article-list-wrapper">
+                    {% if articles %}
+                        <table class="table" style="margin-top: 20px">
+                        <tbody>
+                        <tr>
+                            <th>#</th>
+                            <th>标题</th>
+                            <th>分类</th>
+                            <th>发布时间</th>
+                            <th>操作</th>
+                        </tr>
+                        {% for article in articles %}
+                           <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><a href="{% url 'news_app:article_detail' article.pk %}">{{ article.title }}</a></td>
+                               <td>{{ article.category.name }}</td>
+                                <td>{{ article.pub_date | date:"Y/m/d" }}</td>
+                                <td>
+                                    <a href="{% url 'news_app:edit' article.pk %}" class="btn btn-xs btn-primary">编辑</a>
+                                    <a href="{% url 'news_app:delete' article.id %}" class="btn btn-xs btn-danger">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                    {% else %}
+                        <div class="no-article">
+                            <i class="icon-dai iconfont"></i>
+                            <h4>您未发布任何文章</h4>
+                            <a href="{% url 'news_app:write_article' %}">去发布</a>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

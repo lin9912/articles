@@ -1,0 +1,45 @@
+{% extends 'article/base.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/user_center.css' %}">
+    <link rel="stylesheet" href="{% static 'css/edit_info.css' %}">
+{% endblock %}
+
+{% block title %}个人中心{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <p><a href="javascript:window.history.go(-1);" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1><b>编辑资料</b></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9 col-sm-9 col-xs-12 blog-content">
+            <div class="edit_info_wrapper">
+               <form method="post">
+                   {% csrf_token %}
+
+                   <div class="form-group">
+                    <label for="usernameInput">用户名</label>
+                    <input type="text" class="form-control" id="usernameInput" placeholder="设置新用户名" value="{{ user.username }}" name="username">
+                   <input type="hidden" value="{{ user.pk }}" name="user_id">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputEmail1">邮箱</label>
+                    <input type="email" class="form-control" id="InputEmail1" placeholder="设置新邮箱" value="{{ user.email }}" name="email">
+                  </div>
+
+                    {% for error in errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+
+                  <input type="submit" value="保存" class="button">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

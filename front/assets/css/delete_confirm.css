@@ -1,0 +1,46 @@
+.row .blog-content .confirm-wrapper .delete-confirm {
+    margin: 0 auto;
+    width: 300px;
+    margin-top: 40px;
+}
+
+.row .blog-content .confirm-wrapper .delete-confirm i {
+    font-size: 80px;
+    margin-left: 100px;
+}
+
+.row .blog-content .confirm-wrapper .delete-confirm h4 {
+    margin-left: 35px;
+}
+
+.row .blog-content .confirm-wrapper .delete-confirm a {
+    line-height: 16px;
+	display: inline-block;
+	padding: 12px 15px;
+	background-color: #e3e3e3;
+	color: #3b3b3b;
+	text-decoration: none;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 1px;
+    border: 0px;
+    float: left;
+    margin-right: 20px;
+    margin-left: 70px;
+    margin-bottom: 20px;
+}
+
+.row .blog-content .confirm-wrapper .delete-confirm  form input {
+    line-height: 16px;
+	display: inline-block;
+	padding: 12px 15px;
+	background-color: red;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 1px;
+    border: 0px;
+    float: left;
+
+}

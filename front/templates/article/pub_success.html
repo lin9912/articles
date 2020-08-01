@@ -1,0 +1,19 @@
+{% extends 'article/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/pub_success.css' %}">
+{% endblock %}
+
+{% block title %}发布新闻{% endblock %}
+
+
+{% block content %}
+    <div class="success-wrapper">
+        <div class="success-icon"><i class="icon-zhayan iconfont"></i></div>
+        <h3>发布成功</h3>
+        <div class="btns">
+            <a class="home-btn" href="{% url 'news_app:index' %}">回到首页</a>
+            <a class="view-article-btn" href="{% url 'news_app:article_detail' article_id %}">查看文章</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'article/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/write_article.css' %}">
+{% endblock %}
+
+{% block title %}发布新闻{% endblock %}
+
+
+{% block content %}
+    <div class="page-title">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <p><a href="javascript:window.history.go(-1);" style="text-decoration: none"><i class="icon-shangyiye iconfont" style="color: #3b3b3b;"></i></a></p>
+                <h1><b>发布文章</b></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9 col-sm-9 col-xs-12 blog-content">
+            <div class="write_news_wrapper" style="background: white; padding: 20px">
+                <form method="post">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="titleInput">标题</label>
+                    <input type="text" class="form-control" id="titleInput" name="title" placeholder="输入文章标题">
+                  </div>
+                    <div class="form-group">
+                        <label for="thumbnailInput">封面</label>
+                        <input type="url" class="form-control" id="thumbnailInput" name="thumbnail" placeholder="输入图片url">
+                  </div>
+                  <div class="form-group">
+                    <label for="descInput">描述</label>
+                    <input type="text" class="form-control" id="descInput" name="desc" placeholder="简单描述一下这篇文章">
+                  </div>
+                  <div class="form-group">
+                    <label for="categoryInput">分类</label>
+                      <select name="category" id="categoryInput" class="form-control">
+                            {% for category in categories %}
+                                <option value="{{ category.pk }}">{{ category.name }}</option>
+                            {% endfor %}
+                      </select>
+                  </div>
+
+                  <div class="contentInput">
+                      <label>内容</label>
+                        <script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+                        <textarea name="editor1"></textarea>
+                        <script>
+                            CKEDITOR.replace( 'editor1' , {uiColor: '#FFFFFF'});
+                        </script>
+                  </div>
+                    <input type="submit" value="发布" class="button">
+                </form>
+            </div>
+        </div>
+    <div class="col-md-3 col-sm-3 col-xs-12 sidebar">
+    <div class="sidebar-content">
+        <h4><strong>我的文章 ({{ articles.count }}篇)</strong></h4>
+        <ul class="my-article-list">
+            {% for article in articles %}
+                <li><a href="{% url 'news_app:article_detail' article.pk %}">{{ article.title }}</a></li>
+            {% endfor %}
+            <li><button class="manage-article" onClick="location.href='{% url 'news_app:article_management' user.username %}'">管理文章</button></li>
+        </ul>
+    </div>
+    </div>
+    </div>
+{% endblock %}

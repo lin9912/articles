@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Document Settings -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/png" href="assets/images/favicon.jpg" />
+		<!-- Page Title -->
+		<title>{% block title %}{% endblock %}</title>
+		<!-- Fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
+		<!-- Styles -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="//at.alicdn.com/t/font_1975388_tqdquovc7m.css">
+	    {% block head %}
+	    
+	    {% endblock %}
+    </head>
+	<body>
+{#		<div class="loader"></div>#}
+		<div class="wrapper">
+			<div class="container">
+				<header>
+					<div class="logo">
+						<a href="/">
+                            <h1>Lin.</h1>
+						</a>
+					</div>
+					<div class="mobile-menu">
+						<span class="line"></span>
+					</div>
+					<nav>
+						<ul>
+							<li><a href="/">首页</a></li>
+							<li><a href="{% url 'about' %}">关于</a></li>
+						</ul>
+
+					</nav>
+                    <div class="search-login">
+                        <ul>
+                            <li><a href="{% url 'news_app:search' %}" class="icon-search iconfont" id="search-icon"></a></li>
+                            {% if user.pk %}
+                                <li><a href="{% url 'auth_app:user_center' user.username %}">进入个人中心：{{ user.username }}</a></li>
+                            {% else %}
+                                <li><a href="{% url 'auth_app:login' %}" class="icon-user iconfont"></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+				</header>
+
+
+				{% block content %}
+
+				{% endblock %}
+
+				<footer>
+					<p>
+{#						<b>联系方式</b>#}
+                        <br>
+                        开发者 / 林航钧
+						<br>
+						电话 / +86 158 5900 4823
+						<br>
+						Email / linhangjun@gmail.com
+						<br>
+						地址 / 1174, Budapest, Hungary
+					</p>
+				</footer>
+			</div>
+		</div>
+		<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.js' %}"></script>
+		<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+		<script src="{% static 'js/website-smooth-scroll.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+	</body>
+</html>
